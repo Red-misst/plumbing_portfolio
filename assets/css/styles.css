@@ -5,6 +5,14 @@
     background-size: 32px 32px;
 }
 
+/* Dark mode blueprint grid — lighter lines on dark background */
+.dark .blueprint-grid {
+    background-image:
+        linear-gradient(to right, rgba(200, 198, 197, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 198, 197, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
 .fade-up-element {
     opacity: 0;
     transform: translateY(24px);
@@ -19,3 +27,10 @@
 .parallax-layer {
     transition: transform 0.1s linear;
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar       { width: 6px; background: #fcf9f2; }
+::-webkit-scrollbar-thumb { background: #c4c7c7; }
+.dark ::-webkit-scrollbar       { background: #0e0e0d; }
+.dark ::-webkit-scrollbar-thumb { background: #504e4b; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #e87a55; }

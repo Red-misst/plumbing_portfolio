@@ -3,6 +3,8 @@ const SECTIONS = [
   { id: 'section-hero',     file: 'sections/hero.html'     },
   { id: 'section-services', file: 'sections/services.html' },
   { id: 'section-about',    file: 'sections/about.html'    },
+  { id: 'section-projects', file: 'sections/projects.html' },
+  { id: 'section-contact',  file: 'sections/contact.html'  },
   { id: 'section-footer',   file: 'sections/footer.html'   },
 ];
 

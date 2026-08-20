@@ -1,0 +1,170 @@
+<!-- Contact Section -->
+<section class="w-full py-lg bg-surface-container border-t border-outline/20" id="contact">
+    <div class="max-w-max_width mx-auto px-md">
+
+        <!-- Section Header -->
+        <div class="mb-lg fade-up-element">
+            <div class="inline-block border border-outline px-xs py-[2px] mb-md w-fit bg-surface">
+                <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Get In Touch</span>
+            </div>
+            <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary uppercase leading-none">
+                Start A<br>Project.
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+
+            <!-- Form (8 cols) -->
+            <div class="lg:col-span-8 fade-up-element" style="transition-delay: 0.05s;">
+                <form class="space-y-sm" id="plumbing-contact-form">
+
+                    <!-- Name + Phone -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-name">Name</label>
+                            <input
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                                id="pl-name" type="text" placeholder="Full name" />
+                        </div>
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-phone">Phone</label>
+                            <input
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                                id="pl-phone" type="tel" placeholder="(512) 000-0000" />
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-email">Email</label>
+                        <input
+                            class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                            id="pl-email" type="email" placeholder="your@email.com" />
+                    </div>
+
+                    <!-- Project Type + Budget -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-type">Project Type</label>
+                            <select
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none transition-colors"
+                                id="pl-type">
+                                <option value="">Select type...</option>
+                                <option>Commercial New Build</option>
+                                <option>Residential New Build</option>
+                                <option>Commercial Retrofit / Repair</option>
+                                <option>High-End Residential</option>
+                                <option>Industrial Infrastructure</option>
+                                <option>Emergency Service</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-budget">Estimated Budget</label>
+                            <select
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none transition-colors"
+                                id="pl-budget">
+                                <option value="">Select range...</option>
+                                <option>Under $25,000</option>
+                                <option>$25,000 – $75,000</option>
+                                <option>$75,000 – $250,000</option>
+                                <option>$250,000+</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-message">Project Details</label>
+                        <textarea
+                            class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors resize-none"
+                            id="pl-message" rows="5" placeholder="Describe the project scope, location, timeline, and any special requirements..."></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button
+                        class="inline-flex items-center justify-center px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors uppercase mt-2"
+                        id="plumbing-submit-btn"
+                        type="submit">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Info Panel (4 cols) -->
+            <div class="lg:col-span-4 flex flex-col gap-md fade-up-element" style="transition-delay: 0.1s;">
+
+                <!-- Response time -->
+                <div class="border border-outline/20 p-md bg-surface">
+                    <div class="flex items-center gap-sm mb-sm">
+                        <div class="w-2 h-2 bg-secondary" style="animation: pl-pulse 2s infinite;"></div>
+                        <span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Response within 24hrs</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Detailed proposals with material specs, labor breakdowns, and project timelines.
+                    </p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="border border-outline/20 p-md bg-surface space-y-md">
+                    <div class="border-b border-outline/20 pb-sm">
+                        <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Contact Info</span>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">call</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Direct Line</p>
+                            <p class="font-h3 text-h3 text-primary">(512) 000-0000</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">mail</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Email</p>
+                            <p class="font-body-md text-body-md text-on-surface">info@ridgeandflow.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Service Area</p>
+                            <p class="font-body-md text-body-md text-on-surface">Austin Metro & Central Texas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Licensed badge -->
+                <div class="border border-outline/20 p-md bg-surface">
+                    <div class="flex items-center gap-sm mb-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 0;">verified</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Fully Credentialed</span>
+                    </div>
+                    <div class="space-y-1 font-label-mono text-label-mono text-on-surface-variant">
+                        <div class="flex justify-between">
+                            <span>TX MASTER LICENSE</span><span class="text-secondary">#M-00000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>BONDED & INSURED</span><span class="text-secondary">YES</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>ESTABLISHED</span><span class="text-secondary">1994</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes pl-pulse {
+        0%   { box-shadow: 0 0 0 0 rgba(166, 59, 16, 0.7); }
+        70%  { box-shadow: 0 0 0 6px rgba(166, 59, 16, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(166, 59, 16, 0); }
+    }
+</style>

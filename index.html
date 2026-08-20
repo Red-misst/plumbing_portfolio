@@ -180,18 +180,81 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         /* Smooth theme transition */
-        body, nav, section, footer, div {
+        *, body, nav, section, footer, div {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-        /* Dark mode body overrides */
+
+        /* ══════════════════════════════════════
+           DARK MODE OVERRIDES
+           ══════════════════════════════════════ */
+
+        /* Body */
         .dark body {
-            background-color: #1c1c18;
-            color: #e0ddd6;
+            background-color: #141413 !important;
+            color: #e0ddd6 !important;
         }
-        .dark .blueprint-grid {
-            background-image:
-                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+        /* Backgrounds */
+        .dark .bg-surface          { background-color: #141413 !important; }
+        .dark .bg-background       { background-color: #141413 !important; }
+        .dark .bg-surface-container-lowest { background-color: #0e0e0d !important; }
+        .dark .bg-surface-container-low    { background-color: #1a1a18 !important; }
+        .dark .bg-surface-container        { background-color: #212120 !important; }
+        .dark .bg-surface-container-high   { background-color: #282826 !important; }
+        .dark .bg-surface-container-highest{ background-color: #2f2f2d !important; }
+        .dark .bg-surface-variant          { background-color: #2f2f2d !important; }
+        .dark .bg-surface-dim              { background-color: #141413 !important; }
+        .dark .bg-surface-bright           { background-color: #3a3a38 !important; }
+        .dark .bg-primary-container        { background-color: #2a2a2a !important; }
+        .dark .bg-on-surface               { background-color: #e0ddd6 !important; }
+        .dark .bg-inverse-surface          { background-color: #e0ddd6 !important; }
+
+        /* Text */
+        .dark .text-on-surface         { color: #e0ddd6 !important; }
+        .dark .text-on-background      { color: #e0ddd6 !important; }
+        .dark .text-on-surface-variant { color: #a8a49f !important; }
+        .dark .text-primary            { color: #c8c6c5 !important; }
+        .dark .text-secondary          { color: #e87a55 !important; }
+        .dark .text-tertiary           { color: #c0d4f5 !important; }
+        .dark .text-on-primary         { color: #141413 !important; }
+        .dark .text-on-primary-container { color: #c8c6c5 !important; }
+        .dark .text-on-secondary-container { color: #f9cbb8 !important; }
+        .dark .text-on-tertiary-container  { color: #c0d4f5 !important; }
+        .dark .text-outline            { color: #6b6865 !important; }
+        .dark .text-outline-variant    { color: #504e4b !important; }
+        .dark .text-surface            { color: #141413 !important; }
+        .dark .text-surface-variant    { color: #2f2f2d !important; }
+        .dark .text-secondary-fixed    { color: #e87a55 !important; }
+
+        /* Borders */
+        .dark .border-on-surface         { border-color: #6b6865 !important; }
+        .dark .border-on-surface-variant { border-color: #504e4b !important; }
+        .dark .border-outline            { border-color: #6b6865 !important; }
+        .dark .border-outline\/20        { border-color: rgba(107,104,101,0.2) !important; }
+        .dark .border-outline\/30        { border-color: rgba(107,104,101,0.3) !important; }
+        .dark .border-secondary          { border-color: #e87a55 !important; }
+        .dark .border-primary            { border-color: #c8c6c5 !important; }
+
+        /* Forms */
+        .dark input,
+        .dark select,
+        .dark textarea {
+            background-color: #212120 !important;
+            color: #e0ddd6 !important;
+            border-color: #504e4b !important;
+        }
+        .dark input::placeholder,
+        .dark textarea::placeholder { color: #6b6865 !important; }
+
+        /* Footer */
+        .dark footer {
+            background-color: #0e0e0d !important;
+        }
+        .dark footer .text-surface {
+            color: #e0ddd6 !important;
+        }
+        .dark footer .text-surface-variant\/60 {
+            color: rgba(224,221,214,0.5) !important;
         }
     </style>
 </head>
@@ -201,6 +264,8 @@
     <div id="section-hero"></div>
     <div id="section-services"></div>
     <div id="section-about"></div>
+    <div id="section-projects"></div>
+    <div id="section-contact"></div>
     <div id="section-footer"></div>
 
     <script type="module" src="assets/js/main.js"></script>
