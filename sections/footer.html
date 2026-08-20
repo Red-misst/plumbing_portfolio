@@ -9,7 +9,8 @@
             <span class="text-surface-variant/60 border border-outline/30 px-xs py-[2px]">Austin, TX</span>
         </div>
         <div class="font-label-mono text-label-mono uppercase text-surface-variant/40 mt-sm md:mt-0">
-            © 2026 RIDGE &amp; FLOW PLUMBING CO. EST. 1994
+            © <span id="current-year"></span> RIDGE &amp; FLOW PLUMBING CO. EST. 1994
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
         </div>
     </div>
 </footer>
