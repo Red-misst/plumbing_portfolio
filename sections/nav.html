@@ -1,0 +1,40 @@
+<nav class="w-full top-0 sticky z-50 bg-surface dark:bg-[#1c1c18] border-b border-on-surface-variant/20 transition-colors duration-300" id="navbar">
+    <div class="flex justify-between items-center max-w-max_width mx-auto px-md py-sm">
+        <a class="font-h3 text-h3 text-primary dark:text-white uppercase" href="#">RIDGE &amp; FLOW</a>
+        <div class="hidden md:flex items-center gap-md font-body-md text-body-md uppercase tracking-widest">
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#services">Services</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#about">About</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#projects">Projects</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#contact">Contact</a>
+            <!-- Theme Toggle (Desktop) -->
+            <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 border border-outline dark:border-white/20 rounded-none text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary hover:border-secondary dark:hover:border-secondary transition-colors">
+                <span id="theme-icon" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
+            </button>
+        </div>
+        <div class="flex items-center gap-2 md:hidden">
+            <!-- Theme Toggle (Mobile) -->
+            <button id="theme-toggle-mobile" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 border border-outline dark:border-white/20 rounded-none text-on-surface-variant dark:text-white/60 hover:text-secondary transition-colors">
+                <span id="theme-icon-mobile" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-open" class="flex items-center justify-center p-2 border border-outline dark:border-white/20">
+                <span class="material-symbols-outlined dark:text-white">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface flex flex-col justify-center items-center gap-8 translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+    <button id="mobile-menu-close" aria-label="Close Menu" class="absolute top-4 right-8 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined" style="font-size: 32px;">close</span>
+    </button>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#services">SERVICES</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#about">ABOUT</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#projects">PROJECTS</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#contact">CONTACT</a>
+</div>

@@ -1,0 +1,117 @@
+<section class="relative min-h-[calc(100vh-80px)] w-full flex items-center border-b border-outline/20 bg-surface">
+    <!-- Animation Background -->
+    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <!-- STITCH_SVG_START:ANIMATION_1 class="absolute inset-0 w-full h-full" -->
+        <div class="absolute inset-0 w-full h-full" id="animated-svg-ANIMATION_1" style="display:block;"><svg
+                viewbox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        @keyframes flow {
+                            from {
+                                offset-distance: 0%;
+                            }
+
+                            to {
+                                offset-distance: 100%;
+                            }
+                        }
+
+                        .pipe {
+                            stroke: #D4D0C8;
+                            stroke-width: 1;
+                        }
+
+                        .flow-dot {
+                            fill: #B5451B;
+                        }
+                    </style>
+                </defs>
+                <!-- Horizontal Pipes -->
+                <path class="pipe" d="M0 160 H1280" id="h1"></path>
+                <path class="pipe" d="M0 320 H1280" id="h2"></path>
+                <path class="pipe" d="M0 480 H1280" id="h3"></path>
+                <path class="pipe" d="M0 640 H1280" id="h4"></path>
+                <!-- Vertical Pipes -->
+                <path class="pipe" d="M256 0 V800" id="v1"></path>
+                <path class="pipe" d="M512 0 V800" id="v2"></path>
+                <path class="pipe" d="M768 0 V800" id="v3"></path>
+                <path class="pipe" d="M1024 0 V800" id="v4"></path>
+                <!-- Flowing Dots -->
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="8s" path="M0 160 H1280" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="12s" path="M1024 0 V800" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="10s" path="M0 480 H1280" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="15s" path="M512 0 V800" repeatcount="indefinite"></animatemotion>
+                </circle>
+            </svg></div><!-- STITCH_SVG_END:ANIMATION_1 -->
+    </div>
+    <div class="max-w-max_width mx-auto w-full px-md flex flex-col md:flex-row relative z-10 gap-lg h-full py-xl">
+        <!-- Left Text Content (55%) -->
+        <div class="w-full md:w-[55%] flex flex-col justify-center fade-up-element visible pr-md">
+            <h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary mb-sm uppercase">Built
+                Right.<br />No Shortcuts.</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-lg">
+                Three decades of uncompromising plumbing infrastructure for Austin’s commercial and high-end
+                residential markets. Precision engineering meets architectural integrity.
+            </p>
+            <div class="flex gap-sm">
+                <a class="inline-flex items-center justify-center px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors cursor-pointer uppercase"
+                    href="#services">
+                    Explore Services
+                </a>
+                <a class="inline-flex items-center justify-center px-lg py-sm bg-transparent text-primary font-label-mono text-label-mono border border-primary hover:bg-surface-variant transition-colors cursor-pointer uppercase"
+                    href="#contact">
+                    Consultation
+                </a>
+            </div>
+        </div>
+        <!-- Right Parallax Mosaic (45%) -->
+        <div class="w-full md:w-[45%] h-[600px] relative">
+            <div class="grid grid-cols-2 grid-rows-3 gap-base h-full absolute inset-0">
+                <!-- Top Left (Taller) -->
+                <div class="col-span-1 row-span-2 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="0.05">
+                    <img class="absolute inset-0 w-full h-full object-cover mix-blend-multiply"
+                        data-alt="A highly detailed, architectural close-up of masterfully installed industrial copper plumbing pipes against a minimalist concrete wall. The scene is brightly lit with natural sunlight casting strong shadows, highlighting the rigid, expert craftsmanship and institutional quality of the infrastructure. The color palette is composed of deep bone whites, concrete grays, and the rich, vibrant rust/copper tone of the pipes."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvvgEr94TfO77t1rvzyobEbr5og2yNI_y9MP6asotV_kogTDq1xX5niRdV1DOr_DPZ22gHvk3n8kZGHYCd9IQHTlPEIBxz2jYdBzuIk_ePXZmZBTD9zozjpPrJAr_2Wbf68_jw7j17qiFLv6LnkWmVY1Phk2O9c4PIAUwwlksAAE-z1laazI9D80AqLOoXsJSr7IqNwoqdJyCnSkNPTBh_m_1_GOSUhPY6uFMDPhrdB6MCOP6oPBL0" />
+                </div>
+                <!-- Top Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="-0.03">
+                    <img class="absolute inset-0 w-full h-full object-cover mix-blend-multiply grayscale"
+                        data-alt="A wide, minimalist shot of a modern, institutional utility room under construction. The room features stark white walls and a flawlessly organized grid of metal pipes and valves running along the ceiling. The lighting is harsh and architectural, emphasizing the pristine, serious nature of commercial plumbing infrastructure. The aesthetic is clean, rigid, and professional."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6h0nfXU3M65Q8E-sJNs39mv6yCs9NnM8hnbAMz-dLQWKvLkS1kVyn5Pju9dK8WhBppJ_fxIiI_aO15TLmZdwqf93fbyCUOEt5P1KOvKtAmnqJzVdL16tKks1aRQ_2LkTMNWm5uYUYMczm6Eu8dZsSXjw0WfOfJVAfMAybcGYkuf8d8aUkX7mL-_zFllXLuFl4sN768NHxhrk8mSrNPJLg6Rc_RNf5Q0uLRPaD4XOOv9ucCDQpmb_" />
+                </div>
+                <!-- Middle Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-secondary/10 parallax-layer"
+                    data-speed="0.08">
+                    <img class="absolute inset-0 w-full h-full object-cover mix-blend-multiply"
+                        data-alt="A detailed, high-contrast shot of a heavy-duty brass commercial water valve set against a clean, linen-colored background. The image is hyper-focused on the precision threading and solid construction of the valve, conveying permanence and stability. The lighting is studio-quality, emphasizing the metallic textures."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLb4g-J_UPQgjwFnYSMRnmkIDKzUhOIlX4aEhg6JNDJxFcadYIsE_Y2NNTrKgnot2RQnSV7TCJce0EYRPR_Q2KSmnTK6xSflCpHq5EQrX9FcfUTg0VV6ffso9Q0wsGaEcVIHjS5BUaDcu38kTlMpgmxEHcHZutMB18D0L-s23ZQ3nvqzgiOZR4F_j89ZcjMzJYqtYlUl0Qw3Hvf7x4ONh4B184IziPJ6tn8kTpmogRKIoEJVum5mdk" />
+                </div>
+                <!-- Bottom Left -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="-0.05">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div
+                            class="font-label-mono text-label-mono border border-outline px-sm py-xs uppercase text-on-surface-variant bg-surface">
+                            Est. 1994</div>
+                    </div>
+                </div>
+                <!-- Bottom Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="0.02">
+                    <img class="absolute inset-0 w-full h-full object-cover mix-blend-multiply"
+                        data-alt="An abstract, architectural photograph of intersecting metal pipes creating a rigid, geometric grid pattern. The scene is minimal and stark, using a stark black and white palette to highlight the structured, blueprint-like layout of the plumbing system. The image evokes a sense of expert planning and Goldman Sachs-level institutional quality."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBenAAxGIOZREegTt675fSmVOgL4NDsp27VN0Ej4w1hiVhtKXZ1MgJ8B3sC4OS9RS35QH6LNDTebsWsc7GrXwHoroMQjshYiVFQR-s1mrp59dr7ecL1ACsfA-9wWLa15vLzhlbe66oO2HW7QbiSBkQP6MIOcq2cTbfQ1nZEitz8-S2urswPdIZ33gwmaxUfPW4EOA7WX5OeVk_4jQ4HuVHAJV10qs_5y_h9deP3ZBLKords_jAKAkmj" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

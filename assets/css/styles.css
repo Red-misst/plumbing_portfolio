@@ -1,0 +1,21 @@
+.blueprint-grid {
+    background-image:
+        linear-gradient(to right, rgba(28, 28, 24, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 28, 24, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.fade-up-element {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.parallax-layer {
+    transition: transform 0.1s linear;
+}
