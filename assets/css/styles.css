@@ -28,9 +28,68 @@
     transition: transform 0.1s linear;
 }
 
+
 /* Custom scrollbar */
 ::-webkit-scrollbar       { width: 6px; background: #fcf9f2; }
 ::-webkit-scrollbar-thumb { background: #c4c7c7; }
 .dark ::-webkit-scrollbar       { background: #0e0e0d; }
 .dark ::-webkit-scrollbar-thumb { background: #504e4b; }
 .dark ::-webkit-scrollbar-thumb:hover { background: #e87a55; }
+
+/* ══════════════════════════════════════
+   IMAGE LAZY LOADING — SKELETON SHIMMER
+   ══════════════════════════════════════ */
+
+/* Shimmer keyframe */
+@keyframes img-shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+/* Any image that hasn't finished loading gets a shimmer background on its parent */
+img {
+    display: block;
+    /* Smooth fade-in once loaded */
+    transition: opacity 0.4s ease;
+}
+
+/* While loading: the image itself is invisible, parent shows shimmer */
+img:not([src]),
+img[src=''] {
+    opacity: 0;
+}
+
+/* Skeleton shimmer on direct parent of lazy images */
+.parallax-layer,
+.group > div:first-child,
+.relative.h-\[500px\],
+.relative.h-\[320px\] {
+    background-image: linear-gradient(
+        90deg,
+        #ebe8e1 25%,
+        #f6f3ec 50%,
+        #ebe8e1 75%
+    );
+    background-size: 800px 100%;
+    animation: img-shimmer 1.6s infinite linear;
+}
+
+/* Stop shimmer once any child image inside has loaded */
+.img-loaded {
+    background-image: none !important;
+    animation: none !important;
+}
+
+.dark .parallax-layer,
+.dark .group > div:first-child,
+.dark .relative.h-\[500px\],
+.dark .relative.h-\[320px\] {
+    background-image: linear-gradient(
+        90deg,
+        #212120 25%,
+        #2f2f2d 50%,
+        #212120 75%
+    );
+    background-size: 800px 100%;
+    animation: img-shimmer 1.6s infinite linear;
+}

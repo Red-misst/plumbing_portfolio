@@ -116,6 +116,55 @@ function initAnimations() {
     });
 }
 
+function initLazyImages() {
+    function revealImage(img, parent) {
+        parent.classList.add('img-loaded');
+        img.style.opacity = '1';
+    }
+
+    // Eager images: start fetching immediately after DOM insertion.
+    function handleEager(img) {
+        const parent = img.parentElement;
+        if (!parent) return;
+        if (img.complete && img.naturalWidth > 0) {
+            revealImage(img, parent);
+        } else {
+            img.style.opacity = '0';
+            img.addEventListener('load',  () => revealImage(img, parent), { once: true });
+            img.addEventListener('error', () => revealImage(img, parent), { once: true });
+        }
+    }
+
+    // Lazy images: the browser won't fetch until the image enters the viewport.
+    // Only set opacity:0 AFTER the IntersectionObserver fires (meaning fetch has begun),
+    // so images never get stuck invisible before they've even started loading.
+    function handleLazy(img) {
+        const parent = img.parentElement;
+        if (!parent) return;
+        if (img.complete && img.naturalWidth > 0) {
+            revealImage(img, parent);
+            return;
+        }
+        const io = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                observer.disconnect();
+                if (img.complete && img.naturalWidth > 0) {
+                    revealImage(img, parent);
+                } else {
+                    img.style.opacity = '0';
+                    img.addEventListener('load',  () => revealImage(img, parent), { once: true });
+                    img.addEventListener('error', () => revealImage(img, parent), { once: true });
+                }
+            });
+        }, { rootMargin: '120px' });
+        io.observe(img);
+    }
+
+    document.querySelectorAll('img[loading="lazy"]').forEach(handleLazy);
+    document.querySelectorAll('img[loading="eager"], img:not([loading])').forEach(handleEager);
+}
+
 async function init() {
     // Apply saved theme before sections load to avoid flash
     const html = document.getElementById('html-root');
@@ -126,6 +175,7 @@ async function init() {
     initTheme();
     initNav();
     initAnimations();
+    initLazyImages();
 }
 
 document.addEventListener('DOMContentLoaded', init);
