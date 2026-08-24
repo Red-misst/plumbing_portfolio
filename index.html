@@ -6,14 +6,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Oxford Plumbing</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-    <meta name="description" content="Reliable, modern plumbing solutions in Austin, TX. Established 1994."/>
-    <meta name="keywords" content="plumber, Austin TX, emergency plumbing, Oxford Plumbing"/>
-    <meta property="og:title" content="Oxford Plumbing - Austin TX"/>
-    <meta property="og:description" content="Reliable, modern plumbing solutions in Austin, TX."/>
-    <meta property="og:image" content="/public/og-image.png"/>
-    <meta property="og:url" content="https://plumbing-2.netlify.app/"/>
-    <meta property="og:type" content="website"/>
-    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="description" content="Reliable, modern plumbing solutions in Austin, TX. Established 1994." />
+    <meta name="keywords" content="plumber, Austin TX, emergency plumbing, Oxford Plumbing" />
+    <meta property="og:title" content="Oxford Plumbing - Austin TX" />
+    <meta property="og:description" content="Reliable, modern plumbing solutions in Austin, TX." />
+    <meta property="og:image" content="/public/og-image.png" />
+    <meta property="og:url" content="https://plumbing-2.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="geo.region" content="US-TX" />
     <meta name="geo.placename" content="Austin" />
     <meta name="geo.position" content="30.2672;-97.7431" />
@@ -65,7 +65,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -88,15 +88,15 @@
                         "primary-fixed-dim": "#c8c6c5",
                         "on-primary-container": "#858484",
                         "surface-container-high": "#ebe8e1",
-                        "secondary": "#1d3557",
+                        "secondary": "#d9381e",
                         "tertiary-container": "#001d39",
-                        "surface": "#fcf9f2",
+                        "surface": "#ffffff",
                         "surface-container-low": "#f6f3ec",
                         "tertiary-fixed-dim": "#aac9f4",
                         "on-secondary-container": "#f1eee7",
-                        "background": "#fcf9f2",
+                        "background": "#f8f9fa",
                         "on-tertiary": "#ffffff",
-                        "primary": "#010101",
+                        "primary": "#0e3b64",
                         "error": "#ba1a1a",
                         "inverse-primary": "#c8c6c5",
                         "on-background": "#1c1c18",
@@ -231,7 +231,12 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         /* Smooth theme transition */
-        *, body, nav, section, footer, div {
+        *,
+        body,
+        nav,
+        section,
+        footer,
+        div {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
@@ -246,47 +251,155 @@
         }
 
         /* Backgrounds */
-        .dark .bg-surface          { background-color: #141413 !important; }
-        .dark .bg-background       { background-color: #141413 !important; }
-        .dark .bg-surface-container-lowest { background-color: #0e0e0d !important; }
-        .dark .bg-surface-container-low    { background-color: #1a1a18 !important; }
-        .dark .bg-surface-container        { background-color: #212120 !important; }
-        .dark .bg-surface-container-high   { background-color: #282826 !important; }
-        .dark .bg-surface-container-highest{ background-color: #2f2f2d !important; }
-        .dark .bg-surface-variant          { background-color: #2f2f2d !important; }
-        .dark .bg-surface-dim              { background-color: #141413 !important; }
-        .dark .bg-surface-bright           { background-color: #3a3a38 !important; }
-        .dark .bg-primary-container        { background-color: #2a2a2a !important; }
-        .dark .bg-on-surface               { background-color: #e0ddd6 !important; }
-        .dark .bg-inverse-surface          { background-color: #e0ddd6 !important; }
-        .dark .bg-primary                  { background-color: #c8c6c5 !important; }
+        .dark .bg-surface {
+            background-color: #141413 !important;
+        }
+
+        .dark .bg-background {
+            background-color: #141413 !important;
+        }
+
+        .dark .bg-surface-container-lowest {
+            background-color: #0e0e0d !important;
+        }
+
+        .dark .bg-surface-container-low {
+            background-color: #1a1a18 !important;
+        }
+
+        .dark .bg-surface-container {
+            background-color: #212120 !important;
+        }
+
+        .dark .bg-surface-container-high {
+            background-color: #282826 !important;
+        }
+
+        .dark .bg-surface-container-highest {
+            background-color: #2f2f2d !important;
+        }
+
+        .dark .bg-surface-variant {
+            background-color: #2f2f2d !important;
+        }
+
+        .dark .bg-surface-dim {
+            background-color: #141413 !important;
+        }
+
+        .dark .bg-surface-bright {
+            background-color: #3a3a38 !important;
+        }
+
+        .dark .bg-primary-container {
+            background-color: #2a2a2a !important;
+        }
+
+        .dark .bg-on-surface {
+            background-color: #e0ddd6 !important;
+        }
+
+        .dark .bg-inverse-surface {
+            background-color: #e0ddd6 !important;
+        }
+
+        .dark .bg-primary {
+            background-color: #c8c6c5 !important;
+        }
 
         /* Text */
-        .dark .text-on-surface         { color: #e0ddd6 !important; }
-        .dark .text-on-background      { color: #e0ddd6 !important; }
-        .dark .text-on-surface-variant { color: #a8a49f !important; }
-        .dark .text-primary            { color: #c8c6c5 !important; }
-        .dark .text-secondary          { color: #457b9d !important; }
-        .dark .text-tertiary           { color: #c0d4f5 !important; }
-        .dark .text-on-primary         { color: #141413 !important; }
-        .dark .text-on-primary\/70     { color: rgba(20,20,19,0.7) !important; }
-        .dark .text-on-primary-container { color: #c8c6c5 !important; }
-        .dark .text-on-secondary-container { color: #e0ddd6 !important; }
-        .dark .text-on-tertiary-container  { color: #c0d4f5 !important; }
-        .dark .text-outline            { color: #6b6865 !important; }
-        .dark .text-outline-variant    { color: #504e4b !important; }
-        .dark .text-surface            { color: #141413 !important; }
-        .dark .text-surface-variant    { color: #2f2f2d !important; }
-        .dark .text-secondary-fixed    { color: #457b9d !important; }
+        .dark .text-on-surface {
+            color: #e0ddd6 !important;
+        }
+
+        .dark .text-on-background {
+            color: #e0ddd6 !important;
+        }
+
+        .dark .text-on-surface-variant {
+            color: #a8a49f !important;
+        }
+
+        .dark .text-primary {
+            color: #c8c6c5 !important;
+        }
+
+        .dark .text-secondary {
+            color: #457b9d !important;
+        }
+
+        .dark .text-tertiary {
+            color: #c0d4f5 !important;
+        }
+
+        .dark .text-on-primary {
+            color: #141413 !important;
+        }
+
+        .dark .text-on-primary\/70 {
+            color: rgba(20, 20, 19, 0.7) !important;
+        }
+
+        .dark .text-on-primary-container {
+            color: #c8c6c5 !important;
+        }
+
+        .dark .text-on-secondary-container {
+            color: #e0ddd6 !important;
+        }
+
+        .dark .text-on-tertiary-container {
+            color: #c0d4f5 !important;
+        }
+
+        .dark .text-outline {
+            color: #6b6865 !important;
+        }
+
+        .dark .text-outline-variant {
+            color: #504e4b !important;
+        }
+
+        .dark .text-surface {
+            color: #141413 !important;
+        }
+
+        .dark .text-surface-variant {
+            color: #2f2f2d !important;
+        }
+
+        .dark .text-secondary-fixed {
+            color: #457b9d !important;
+        }
 
         /* Borders */
-        .dark .border-on-surface         { border-color: #6b6865 !important; }
-        .dark .border-on-surface-variant { border-color: #504e4b !important; }
-        .dark .border-outline            { border-color: #6b6865 !important; }
-        .dark .border-outline\/20        { border-color: rgba(107,104,101,0.2) !important; }
-        .dark .border-outline\/30        { border-color: rgba(107,104,101,0.3) !important; }
-        .dark .border-secondary          { border-color: #457b9d !important; }
-        .dark .border-primary            { border-color: #c8c6c5 !important; }
+        .dark .border-on-surface {
+            border-color: #6b6865 !important;
+        }
+
+        .dark .border-on-surface-variant {
+            border-color: #504e4b !important;
+        }
+
+        .dark .border-outline {
+            border-color: #6b6865 !important;
+        }
+
+        .dark .border-outline\/20 {
+            border-color: rgba(107, 104, 101, 0.2) !important;
+        }
+
+        .dark .border-outline\/30 {
+            border-color: rgba(107, 104, 101, 0.3) !important;
+        }
+
+        .dark .border-secondary {
+            border-color: #457b9d !important;
+        }
+
+        .dark .border-primary {
+            border-color: #c8c6c5 !important;
+        }
 
         /* Forms */
         .dark input,
@@ -296,19 +409,24 @@
             color: #e0ddd6 !important;
             border-color: #504e4b !important;
         }
+
         .dark input::placeholder,
-        .dark textarea::placeholder { color: #6b6865 !important; }
+        .dark textarea::placeholder {
+            color: #6b6865 !important;
+        }
 
         /* Footer */
         .dark footer.bg-on-surface {
             background-color: #0e0e0d !important;
         }
+
         .dark footer .text-surface {
             color: #e0ddd6 !important;
         }
+
         .dark footer .text-surface-variant\/60,
         .dark footer .text-surface-variant\/40 {
-            color: rgba(224,221,214,0.5) !important;
+            color: rgba(224, 221, 214, 0.5) !important;
         }
 
         /* FAB Pulse Animation */
@@ -317,17 +435,21 @@
                 box-shadow: 0 0 0 0 rgba(29, 53, 87, 0.6);
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
+
             70% {
                 box-shadow: 0 0 0 15px rgba(29, 53, 87, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(29, 53, 87, 0);
                 transform: scale(1);
             }
         }
+
         .fab-pulse-anim {
             animation: fab-pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
         }
@@ -339,14 +461,19 @@
     <div id="section-hero"></div>
     <div id="section-services"></div>
     <div id="section-about"></div>
+    <div id="section-reviews"></div>
     <div id="section-projects"></div>
     <div id="section-contact"></div>
     <div id="section-footer"></div>
     <!-- Floating Action Button -->
-    <a href="tel:+15125424056" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center justify-center w-14 h-14 rounded-[50%] bg-secondary text-on-secondary border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors shadow-lg group fab-pulse-anim" aria-label="Call Us">
-        <span class="material-symbols-outlined group-hover:scale-110 transition-transform" style="font-size: 28px;">call</span>
+    <a href="tel:+15125424056"
+        class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center justify-center w-14 h-14 rounded-[50%] bg-secondary text-on-secondary border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors shadow-lg group fab-pulse-anim"
+        aria-label="Call Us">
+        <span class="material-symbols-outlined group-hover:scale-110 transition-transform"
+            style="font-size: 28px;">call</span>
     </a>
 
     <script type="module" src="assets/js/main.js"></script>
 </body>
+
 </html>
