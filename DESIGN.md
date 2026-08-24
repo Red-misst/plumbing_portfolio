@@ -1,5 +1,5 @@
 ---
-name: Ridge & Flow
+name: Oxford Plumbing
 colors:
   surface: '#fcf9f2'
   surface-dim: '#dcdad3'

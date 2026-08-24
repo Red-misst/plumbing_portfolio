@@ -1,6 +1,6 @@
 <nav class="w-full top-0 sticky z-50 bg-surface dark:bg-[#1c1c18] border-b border-on-surface-variant/20 transition-colors duration-300" id="navbar">
     <div class="flex justify-between items-center max-w-max_width mx-auto px-md py-sm">
-        <a class="font-h3 text-h3 text-primary dark:text-white uppercase" href="#">RIDGE &amp; FLOW</a>
+        <a class="font-h3 text-h3 text-primary dark:text-white uppercase" href="#">OXFORD PLUMBING</a>
         <div class="hidden md:flex items-center gap-md font-body-md text-body-md uppercase tracking-widest">
             <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
                 href="#services">Services</a>
@@ -10,12 +10,21 @@
                 href="#projects">Projects</a>
             <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
                 href="#contact">Contact</a>
+            <!-- Call Button -->
+            <a href="tel:+15125424056" class="flex items-center gap-2 px-sm py-[6px] ml-xs bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:text-surface hover:border-on-surface transition-colors cursor-pointer uppercase">
+                <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+                <span>Estimate</span>
+            </a>
             <!-- Theme Toggle (Desktop) -->
-            <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 border border-outline dark:border-white/20 rounded-none text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary hover:border-secondary dark:hover:border-secondary transition-colors">
+            <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 border border-outline dark:border-white/20 rounded-none text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary hover:border-secondary dark:hover:border-secondary transition-colors ml-2">
                 <span id="theme-icon" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
             </button>
         </div>
         <div class="flex items-center gap-2 md:hidden">
+            <!-- Mobile Call Button -->
+            <a href="tel:+15125424056" class="flex items-center justify-center w-9 h-9 border border-secondary bg-secondary text-on-secondary hover:bg-on-surface hover:text-surface transition-colors" aria-label="Call Us">
+                <span class="material-symbols-outlined" style="font-size: 20px;">call</span>
+            </a>
             <!-- Theme Toggle (Mobile) -->
             <button id="theme-toggle-mobile" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 border border-outline dark:border-white/20 rounded-none text-on-surface-variant dark:text-white/60 hover:text-secondary transition-colors">
                 <span id="theme-icon-mobile" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
@@ -37,4 +46,9 @@
     <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#about">ABOUT</a>
     <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#projects">PROJECTS</a>
     <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#contact">CONTACT</a>
+    
+    <a href="tel:+15125424056" class="mt-4 flex items-center gap-2 px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:text-surface transition-colors cursor-pointer uppercase">
+        <span class="material-symbols-outlined" style="font-size: 24px;">call</span>
+        Schedule Estimate
+    </a>
 </div>

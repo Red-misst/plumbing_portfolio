@@ -37,8 +37,7 @@ function updateThemeIcons(isDark) {
 function initTheme() {
   const html = document.getElementById('html-root');
   const saved = localStorage.getItem('theme-plumbing');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = saved === 'dark' || (!saved && prefersDark);
+  const isDark = saved === 'dark';
 
   if (isDark) html.classList.add('dark');
   else html.classList.remove('dark');
@@ -120,8 +119,7 @@ async function init() {
     // Apply saved theme before sections load to avoid flash
     const html = document.getElementById('html-root');
     const saved = localStorage.getItem('theme-plumbing');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (saved === 'dark' || (!saved && prefersDark)) html.classList.add('dark');
+    if (saved === 'dark') html.classList.add('dark');
 
     await loadSections();
     initTheme();
