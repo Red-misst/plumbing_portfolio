@@ -18,6 +18,53 @@
     <meta name="geo.placename" content="Austin" />
     <meta name="geo.position" content="30.2672;-97.7431" />
     <meta name="ICBM" content="30.2672, -97.7431" />
+    <!-- llms.txt: machine-readable site summary for AI agents -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Oxford Plumbing AI Summary" />
+    <!-- WebMCP: declarative tool registration for AI agent interaction -->
+    <script type="application/json" id="mcp-manifest">
+    {
+      "schema_version": "v1",
+      "name": "Oxford Plumbing Contact",
+      "description": "Submit a plumbing project inquiry or request emergency service from Oxford Plumbing in Austin, TX.",
+      "tools": [
+        {
+          "name": "submit_contact_form",
+          "description": "Submit a plumbing service inquiry to Oxford Plumbing. Collects customer name, phone, email, project type, budget, and project details.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "name":    { "type": "string", "description": "Customer full name" },
+              "phone":   { "type": "string", "description": "Customer phone number" },
+              "email":   { "type": "string", "description": "Customer email address" },
+              "type":    { "type": "string", "description": "Project type (e.g. Emergency Service, Residential New Build)" },
+              "budget":  { "type": "string", "description": "Estimated budget range" },
+              "message": { "type": "string", "description": "Project details, scope, location, timeline" }
+            },
+            "required": ["name", "phone", "message"]
+          },
+          "form": {
+            "action": "#contact",
+            "method": "post",
+            "fields": {
+              "name":    { "selector": "#pl-name" },
+              "phone":   { "selector": "#pl-phone" },
+              "email":   { "selector": "#pl-email" },
+              "type":    { "selector": "#pl-type" },
+              "budget":  { "selector": "#pl-budget" },
+              "message": { "selector": "#pl-message" }
+            },
+            "submit":   { "selector": "#plumbing-submit-btn" }
+          }
+        },
+        {
+          "name": "call_oxford_plumbing",
+          "description": "Initiate a phone call to Oxford Plumbing for immediate or emergency plumbing service in Austin, TX.",
+          "input_schema": { "type": "object", "properties": {} },
+          "link": { "href": "tel:+15125424056" }
+        }
+      ]
+    }
+    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

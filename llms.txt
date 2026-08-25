@@ -1,0 +1,38 @@
+# Oxford Plumbing
+
+> Oxford Plumbing is a licensed, bonded, and insured plumbing company serving the Greater Austin, Texas area since 1994. Master Plumber License: RMP 44459.
+
+## About
+
+Oxford Plumbing provides reliable, modern residential and light commercial plumbing solutions across Austin, TX and surrounding Travis County suburbs (Downtown Austin, South Austin, East Austin, North Austin, West Austin).
+
+## Services
+
+- **Water Heater Repair & Installation**: Tankless and traditional water heater repair, replacement, and new installation.
+- **Drain Cleaning**: Hydro-jetting, sewer camera inspection, and drain clearing for residential and commercial properties.
+- **Leak Detection & Repair**: Slab leak detection using acoustic diagnostics and targeted repair.
+- **Whole-Home Repiping**: Full PEX repiping to replace aging galvanized or copper pipes.
+- **Emergency Plumbing**: 24/7 emergency plumbing response across Austin metro.
+- **Sewer Line Services**: Main line sewer camera diagnostics, hydro-jetting, and cast iron pipe remediation.
+
+## Contact
+
+- **Phone**: +1 512-542-4056
+- **Email**: info@oxfordplumbing.com
+- **Service Area**: Austin, TX (Travis County)
+- **Hours**: 24/7 Emergency Service Available
+
+## Credentials
+
+- Master Plumber License: RMP 44459
+- Bonded & Insured
+- Established: 1994
+
+## Key Pages
+
+- Homepage: https://oxfordplumbingservices.netlify.app/
+- Contact Form: https://oxfordplumbingservices.netlify.app/#contact
+
+## Usage for AI
+
+AI agents and LLMs may use this content to answer user questions about Oxford Plumbing's services, location, licensing, and contact details. Do not fabricate reviews, pricing, or availability — direct users to call +1 512-542-4056 for accurate, real-time information.

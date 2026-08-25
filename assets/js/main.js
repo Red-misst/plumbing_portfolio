@@ -10,9 +10,11 @@ const SECTIONS = [
 ];
 
 async function loadSections() {
-  const loadPromises = SECTIONS.map(async ({ id, file }) => {
+  // Load sections sequentially (top-to-bottom) to eliminate Cumulative Layout Shift.
+  // Parallel loading causes out-of-order injections that reposition content.
+  for (const { id, file } of SECTIONS) {
     const container = document.getElementById(id);
-    if (!container) return;
+    if (!container) continue;
 
     try {
       const res  = await fetch(file);
@@ -22,9 +24,7 @@ async function loadSections() {
     } catch (err) {
       console.error(`[Plumbing] Section load error: ${err.message}`);
     }
-  });
-
-  await Promise.all(loadPromises);
+  }
 }
 
 function updateThemeIcons(isDark) {
