@@ -103,179 +103,23 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link crossorigin="" href="https://lh3.googleusercontent.com" rel="preconnect" />
+    <!-- Self-hosted Tailwind (built from source – no render-blocking CDN) -->
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <!-- Google Fonts: async load to eliminate render-blocking -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" crossorigin="" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" crossorigin="" href="https://lh3.googleusercontent.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"></noscript>
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"></noscript>
 
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-surface": "#1c1c18",
-                        "on-surface-variant": "#444748",
-                        "secondary-fixed-dim": "#ffb59d",
-                        "primary-container": "#1c1c1c",
-                        "on-primary": "#ffffff",
-                        "inverse-surface": "#31312c",
-                        "tertiary-fixed": "#d3e4ff",
-                        "surface-container": "#f1eee7",
-                        "on-error-container": "#93000a",
-                        "outline": "#747878",
-                        "surface-tint": "#5f5e5e",
-                        "secondary-container": "#457b9d",
-                        "on-primary-fixed": "#1b1b1b",
-                        "primary-fixed-dim": "#c8c6c5",
-                        "on-primary-container": "#858484",
-                        "surface-container-high": "#ebe8e1",
-                        "secondary": "#d9381e",
-                        "tertiary-container": "#001d39",
-                        "surface": "#ffffff",
-                        "surface-container-low": "#f6f3ec",
-                        "tertiary-fixed-dim": "#aac9f4",
-                        "on-secondary-container": "#f1eee7",
-                        "background": "#f8f9fa",
-                        "on-tertiary": "#ffffff",
-                        "primary": "#0e3b64",
-                        "error": "#ba1a1a",
-                        "inverse-primary": "#c8c6c5",
-                        "on-background": "#1c1c18",
-                        "on-secondary-fixed": "#161c1f",
-                        "on-tertiary-fixed-variant": "#29486d",
-                        "surface-dim": "#dcdad3",
-                        "on-error": "#ffffff",
-                        "primary-fixed": "#e5e2e1",
-                        "surface-bright": "#fcf9f2",
-                        "on-primary-fixed-variant": "#474746",
-                        "tertiary": "#000105",
-                        "outline-variant": "#c4c7c7",
-                        "surface-variant": "#e5e2db",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary-fixed-variant": "#1d3557",
-                        "on-tertiary-fixed": "#001c38",
-                        "secondary-fixed": "#457b9d",
-                        "on-secondary": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-container": "#6886af",
-                        "surface-container-highest": "#e5e2db",
-                        "inverse-on-surface": "#f3f0e9"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0px",
-                        "lg": "0px",
-                        "xl": "0px",
-                        "full": "0px"
-                    },
-                    "spacing": {
-                        "md": "32px",
-                        "lg": "64px",
-                        "max_width": "1280px",
-                        "xl": "128px",
-                        "base": "8px",
-                        "xs": "4px",
-                        "sm": "16px"
-                    },
-                    "fontFamily": {
-                        "label-mono": [
-                            "DM Mono"
-                        ],
-                        "h3": [
-                            "Playfair Display"
-                        ],
-                        "h2-mobile": [
-                            "Playfair Display"
-                        ],
-                        "body-lg": [
-                            "DM Sans"
-                        ],
-                        "body-md": [
-                            "DM Sans"
-                        ],
-                        "h1": [
-                            "Playfair Display"
-                        ],
-                        "h1-mobile": [
-                            "Playfair Display"
-                        ],
-                        "h2": [
-                            "Playfair Display"
-                        ]
-                    },
-                    "fontSize": {
-                        "label-mono": [
-                            "12px",
-                            {
-                                "lineHeight": "1.0",
-                                "letterSpacing": "0.05em",
-                                "fontWeight": "500"
-                            }
-                        ],
-                        "h3": [
-                            "24px",
-                            {
-                                "lineHeight": "1.3",
-                                "fontWeight": "700"
-                            }
-                        ],
-                        "h2-mobile": [
-                            "32px",
-                            {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "700"
-                            }
-                        ],
-                        "body-lg": [
-                            "18px",
-                            {
-                                "lineHeight": "1.6",
-                                "fontWeight": "400"
-                            }
-                        ],
-                        "body-md": [
-                            "16px",
-                            {
-                                "lineHeight": "1.6",
-                                "fontWeight": "400"
-                            }
-                        ],
-                        "h1": [
-                            "64px",
-                            {
-                                "lineHeight": "1.1",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "700"
-                            }
-                        ],
-                        "h1-mobile": [
-                            "40px",
-                            {
-                                "lineHeight": "1.1",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "700"
-                            }
-                        ],
-                        "h2": [
-                            "48px",
-                            {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "700"
-                            }
-                        ]
-                    }
-                },
-            },
-        }
-    </script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         /* Smooth theme transition */
@@ -481,25 +325,11 @@
             color: rgba(224, 221, 214, 0.5) !important;
         }
 
-        /* FAB Pulse Animation */
+        /* FAB Pulse Animation — composited only (transform + opacity) */
         @keyframes fab-pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(29, 53, 87, 0.6);
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(29, 53, 87, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(29, 53, 87, 0);
-                transform: scale(1);
-            }
+            0%   { transform: scale(1);    opacity: 1; }
+            50%  { transform: scale(1.08); opacity: 0.85; }
+            100% { transform: scale(1);    opacity: 1; }
         }
 
         .fab-pulse-anim {

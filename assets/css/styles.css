@@ -40,10 +40,10 @@
    IMAGE LAZY LOADING — SKELETON SHIMMER
    ══════════════════════════════════════ */
 
-/* Shimmer keyframe */
+/* Shimmer keyframe — opacity only (composited, GPU-friendly) */
 @keyframes img-shimmer {
-    0%   { background-position: -400px 0; }
-    100% { background-position: 400px 0; }
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
 }
 
 /* Any image that hasn't finished loading gets a shimmer background on its parent */
@@ -64,14 +64,8 @@ img[src=''] {
 .group > div:first-child,
 .relative.h-\[500px\],
 .relative.h-\[320px\] {
-    background-image: linear-gradient(
-        90deg,
-        #ebe8e1 25%,
-        #f6f3ec 50%,
-        #ebe8e1 75%
-    );
-    background-size: 800px 100%;
-    animation: img-shimmer 1.6s infinite linear;
+    background-color: #ebe8e1;
+    animation: img-shimmer 1.6s ease-in-out infinite;
 }
 
 /* Stop shimmer once any child image inside has loaded */
@@ -84,12 +78,7 @@ img[src=''] {
 .dark .group > div:first-child,
 .dark .relative.h-\[500px\],
 .dark .relative.h-\[320px\] {
-    background-image: linear-gradient(
-        90deg,
-        #212120 25%,
-        #2f2f2d 50%,
-        #212120 75%
-    );
-    background-size: 800px 100%;
-    animation: img-shimmer 1.6s infinite linear;
+    background-color: #212120;
+    background-image: none;
+    animation: img-shimmer 1.6s ease-in-out infinite;
 }
