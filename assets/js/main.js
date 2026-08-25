@@ -165,6 +165,83 @@ function initLazyImages() {
     document.querySelectorAll('img[loading="eager"], img:not([loading])').forEach(handleEager);
 }
 
+function initReviewsSlider() {
+    const slider = document.getElementById('reviews-slider');
+    if (!slider) return;
+    
+    const originalCount = slider.children.length;
+    
+    // Duplicate children for infinite scroll
+    const children = Array.from(slider.children);
+    children.forEach(child => {
+        const clone = child.cloneNode(true);
+        slider.appendChild(clone);
+    });
+
+    let autoScrollInterval;
+    let isTransitioning = false;
+
+    const scrollNext = () => {
+        if (isTransitioning) return;
+        
+        const slides = slider.children;
+        if (slides.length <= originalCount) return;
+
+        // Calculate scroll amount (one slide + gap)
+        const slideWidth = slides[0].offsetWidth;
+        let gap = 0;
+        if (slides.length > 1) {
+            gap = slides[1].offsetLeft - (slides[0].offsetLeft + slides[0].offsetWidth);
+        }
+        const scrollAmount = slideWidth + (gap > 0 ? gap : 0);
+
+        slider.style.scrollBehavior = 'smooth';
+        slider.scrollLeft += scrollAmount;
+
+        isTransitioning = true;
+        // Wait for smooth scroll to finish before checking reset
+        setTimeout(() => {
+            isTransitioning = false;
+            const resetPoint = slides[originalCount].offsetLeft - slides[0].offsetLeft;
+            if (slider.scrollLeft >= resetPoint) {
+                slider.style.scrollBehavior = 'auto';
+                slider.scrollLeft -= resetPoint;
+            }
+        }, 800);
+    };
+
+    const startAutoScroll = () => {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(scrollNext, 5000); // 5 seconds interval for slower reading pace
+    };
+
+    startAutoScroll();
+
+    // Pause on interaction
+    slider.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+    slider.addEventListener('mouseleave', startAutoScroll);
+    slider.addEventListener('touchstart', () => clearInterval(autoScrollInterval), {passive: true});
+    slider.addEventListener('touchend', startAutoScroll);
+    
+    // Handle manual swiping infinite loop
+    slider.addEventListener('scroll', () => {
+        if (isTransitioning) return;
+        const slides = slider.children;
+        if (slides.length <= originalCount) return;
+        
+        const resetPoint = slides[originalCount].offsetLeft - slides[0].offsetLeft;
+        
+        if (slider.scrollLeft >= resetPoint) {
+            slider.style.scrollBehavior = 'auto';
+            slider.scrollLeft -= resetPoint;
+        } else if (slider.scrollLeft <= 0) {
+            slider.style.scrollBehavior = 'auto';
+            // Snap to the end of the original set if scrolled backward from start
+            slider.scrollLeft += resetPoint;
+        }
+    }, {passive: true});
+}
+
 async function init() {
     // Apply saved theme before sections load to avoid flash
     const html = document.getElementById('html-root');
@@ -176,6 +253,7 @@ async function init() {
     initNav();
     initAnimations();
     initLazyImages();
+    initReviewsSlider();
 }
 
 document.addEventListener('DOMContentLoaded', init);
