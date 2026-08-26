@@ -11,7 +11,7 @@
     <meta property="og:title" content="Oxford Plumbing - Austin TX" />
     <meta property="og:description" content="Reliable, modern plumbing solutions in Austin, TX." />
     <meta property="og:image" content="/public/og-image.png" />
-    <meta property="og:url" content="https://plumbing-2.netlify.app/" />
+    <meta property="og:url" content="https://oxfordplumbingservices.netlify.app/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="geo.region" content="US-TX" />
@@ -70,9 +70,9 @@
       "@context": "https://schema.org",
       "@type": "Plumber",
       "name": "Oxford Plumbing",
-      "image": "https://plumbing-2.netlify.app/public/og-image.png",
-      "@id": "https://plumbing-2.netlify.app/",
-      "url": "https://plumbing-2.netlify.app/",
+      "image": "https://oxfordplumbingservices.netlify.app/public/og-image.png",
+      "@id": "https://oxfordplumbingservices.netlify.app/",
+      "url": "https://oxfordplumbingservices.netlify.app/",
       "telephone": "+1-512-542-4056",
       "address": {
         "@type": "PostalAddress",
@@ -145,14 +145,14 @@
       }
     }
     </script>
-    <!-- Preloads for Performance -->
+
+    <!-- Critical resource preloads — these are the most impactful for LCP -->
     <link rel="preload" as="image" href="images/company website.webp" fetchpriority="high" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" />
+    <link rel="preload" as="script" href="assets/js/main.js" />
 
     <!-- Self-hosted Tailwind (built from source – no render-blocking CDN) -->
     <link rel="stylesheet" href="assets/css/tailwind.css" />
-    <!-- Google Fonts: async load to eliminate render-blocking -->
+    <!-- Google Fonts: preconnect + async load to eliminate render-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" crossorigin="" href="https://fonts.gstatic.com" />
     <link rel="preconnect" crossorigin="" href="https://lh3.googleusercontent.com" />
@@ -382,20 +382,851 @@
         .fab-pulse-anim {
             animation: fab-pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
         }
+
+        /* Reviews slider scrollbar hide */
+        .reviews-slider::-webkit-scrollbar { display: none; }
+        .reviews-slider { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Contact pulse dot */
+        @keyframes pl-pulse {
+            0%   { transform: scale(1);   opacity: 1; }
+            50%  { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(1);   opacity: 1; }
+        }
+
+        /* Hero review badge shuffle animations */
+        @keyframes shuffle-1 {
+            0%, 35% { transform: translateX(0) scale(1) rotate(-6deg); z-index: 20; }
+            45% { transform: translateX(-35px) scale(0.9) rotate(-15deg); z-index: 20; }
+            45.1% { z-index: 0; }
+            50%, 85% { transform: translateX(16px) scale(0.9) rotate(6deg); z-index: 0; }
+            95% { transform: translateX(40px) scale(1.05) rotate(15deg); z-index: 0; }
+            95.1% { z-index: 20; }
+            100% { transform: translateX(0) scale(1) rotate(-6deg); z-index: 20; }
+        }
+        @keyframes shuffle-2 {
+            0%, 35% { transform: translateX(16px) scale(0.9) rotate(6deg); z-index: 0; }
+            45% { transform: translateX(40px) scale(1.05) rotate(15deg); z-index: 0; }
+            45.1% { z-index: 20; }
+            50%, 85% { transform: translateX(0) scale(1) rotate(-6deg); z-index: 20; }
+            95% { transform: translateX(-35px) scale(0.9) rotate(-15deg); z-index: 20; }
+            95.1% { z-index: 0; }
+            100% { transform: translateX(16px) scale(0.9) rotate(6deg); z-index: 0; }
+        }
+        .shuffle-1 { animation: shuffle-1 6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        .shuffle-2 { animation: shuffle-2 6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
     </style>
 </head>
 
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden blueprint-grid">
-    <div id="section-nav"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         NAV
+    ═══════════════════════════════════════════════════════════ -->
+    <div id="section-nav">
+<nav class="w-full top-0 fixed z-50 bg-surface dark:bg-[#1c1c18] border-b border-on-surface-variant/20 transition-colors duration-300" id="navbar">
+    <div class="flex justify-between items-center max-w-max_width mx-auto px-md py-sm">
+        <a class="font-h3 text-h3 text-primary dark:text-white uppercase" href="#">OXFORD PLUMBING</a>
+        <div class="hidden md:flex items-center gap-md font-body-md text-body-md uppercase tracking-widest">
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#services">Services</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#about">About</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#projects">Projects</a>
+            <a class="text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:opacity-70"
+                href="#contact">Contact</a>
+            <!-- Call Button -->
+            <a href="tel:+15125424056" class="flex items-center gap-2 px-sm py-[6px] ml-xs bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:text-surface hover:border-on-surface transition-colors cursor-pointer uppercase">
+                <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+                <span>Estimate</span>
+            </a>
+            <!-- Theme Toggle (Desktop) -->
+            <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center justify-center w-9 h-9 text-on-surface-variant dark:text-white/60 hover:text-secondary dark:hover:text-secondary transition-colors ml-2">
+                <span id="theme-icon" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
+            </button>
+        </div>
+        <div class="flex items-center gap-2 md:hidden">
+            <!-- Mobile Call Button -->
+            <a href="tel:+15125424056" class="flex items-center justify-center w-9 h-9 rounded-[50%] border border-secondary bg-secondary text-on-secondary hover:bg-on-surface hover:text-surface transition-colors" aria-label="Call Us">
+                <span class="material-symbols-outlined" style="font-size: 20px;">call</span>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-open" class="flex items-center justify-center p-2" aria-label="Open Mobile Menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="material-symbols-outlined dark:text-white">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-surface flex flex-col justify-center items-center gap-8 translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+    <button id="mobile-menu-close" aria-label="Close Menu" class="absolute top-4 right-8 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined" style="font-size: 32px;">close</span>
+    </button>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#services">SERVICES</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#about">ABOUT</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#projects">PROJECTS</a>
+    <a class="mobile-nav-link text-h3 text-primary hover:text-secondary transition-colors uppercase tracking-widest" href="#contact">CONTACT</a>
+    
+    <a href="tel:+15125424056" class="mt-4 flex items-center gap-2 px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:text-surface transition-colors cursor-pointer uppercase">
+        <span class="material-symbols-outlined" style="font-size: 24px;">call</span>
+        Schedule Estimate
+    </a>
+
+    <!-- Theme Toggle (Mobile) -->
+    <button id="theme-toggle-mobile" aria-label="Toggle theme" class="flex items-center gap-2 mt-2 text-on-surface-variant hover:text-secondary transition-colors font-label-mono text-label-mono uppercase tracking-widest">
+        <span id="theme-icon-mobile" class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span>
+        <span>Toggle Theme</span>
+    </button>
+</div>
+    </div>
+
     <main id="main-content">
-        <div id="section-hero"></div>
-        <div id="section-services"></div>
-        <div id="section-about"></div>
-        <div id="section-reviews"></div>
-        <div id="section-projects"></div>
-        <div id="section-contact"></div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             HERO
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-hero">
+<section class="relative min-h-[calc(100vh-80px)] w-full flex items-center border-b border-outline/20 bg-surface">
+    <!-- Animation Background -->
+    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <div class="absolute inset-0 w-full h-full" id="animated-svg-ANIMATION_1" style="display:block;"><svg
+                viewbox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        @keyframes flow {
+                            from { offset-distance: 0%; }
+                            to { offset-distance: 100%; }
+                        }
+                        .pipe { stroke: #D4D0C8; stroke-width: 1; }
+                        .flow-dot { fill: #1d3557; }
+                    </style>
+                </defs>
+                <!-- Horizontal Pipes -->
+                <path class="pipe" d="M0 160 H1280" id="h1"></path>
+                <path class="pipe" d="M0 320 H1280" id="h2"></path>
+                <path class="pipe" d="M0 480 H1280" id="h3"></path>
+                <path class="pipe" d="M0 640 H1280" id="h4"></path>
+                <!-- Vertical Pipes -->
+                <path class="pipe" d="M256 0 V800" id="v1"></path>
+                <path class="pipe" d="M512 0 V800" id="v2"></path>
+                <path class="pipe" d="M768 0 V800" id="v3"></path>
+                <path class="pipe" d="M1024 0 V800" id="v4"></path>
+                <!-- Flowing Dots -->
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="8s" path="M0 160 H1280" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="12s" path="M1024 0 V800" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="10s" path="M0 480 H1280" repeatcount="indefinite"></animatemotion>
+                </circle>
+                <circle class="flow-dot" r="2">
+                    <animatemotion dur="15s" path="M512 0 V800" repeatcount="indefinite"></animatemotion>
+                </circle>
+            </svg></div>
+    </div>
+    <div class="max-w-max_width mx-auto w-full px-md flex flex-col md:flex-row relative z-10 gap-lg h-full py-xl">
+        <!-- Left Text Content (55%) -->
+        <div class="w-full md:w-[55%] flex flex-col justify-center fade-up-element visible pr-md">
+            <!-- Reviews Badge -->
+            <div class="flex items-center gap-4 mb-sm">
+                <div class="relative w-14 h-10 ml-2">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline/20 flex items-center justify-center shadow-lg absolute top-0 left-0 shuffle-1 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline/20 flex items-center justify-center shadow-lg absolute top-0 left-0 shuffle-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                            <path fill="#d32323" d="M13.2 11.23l2.8-5.35c.16-.31.02-.68-.29-.82l-2.63-1.1c-.26-.11-.56.03-.66.3l-2.4 6.77c-.12.35.15.71.53.64l2.65-.44zM10.87 12.3l-4.7-4.14c-.26-.23-.65-.17-.85.1l-1.63 2.37c-.18.25-.13.6.11.8l5.88 3.7c.3.19.67-.09.6-.45l-.41-2.38zM9.46 13.91l-6.17.65c-.34.03-.57.34-.51.68l.49 2.82c.06.33.37.55.7.47l5.98-1.5c.34-.09.43-.53.18-.76l-1.67-2.36zM11.64 14.86l-2.2 5.92c-.12.32.06.68.39.78l2.77.8c.32.1.66-.08.76-.4l1.3-6.13c.07-.35-.28-.63-.61-.5l-2.41.53zM13.39 13.97l4.7 4.14c.26.23.65.17.85-.1l1.63-2.37c.18-.25.13-.6-.11-.8l-5.88-3.7c-.3-.19-.67.09-.6.45l.41 2.38z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="flex items-center gap-0.5 mb-1">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+                    </div>
+                    <span class="font-label-mono text-[13px] uppercase text-on-surface tracking-widest font-bold">100+ Verified Reviews</span>
+                </div>
+            </div>
+            
+            <h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary mb-sm uppercase">Honest and Efficient<br />Plumbing Solutions.</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-lg">
+                Fast, honest residential plumbing in Austin with zero dispatch fees. Book your free in-home assessment today and get clear, upfront options from licensed local technicians who treat your home like their own.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-sm w-full">
+                <a class="inline-flex items-center justify-center px-md sm:px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors cursor-pointer uppercase text-center font-bold shadow-md"
+                    href="#services">
+                    See Our Plumbing Services
+                </a>
+                <a class="inline-flex items-center justify-center px-md sm:px-lg py-sm bg-transparent text-primary font-label-mono text-label-mono border border-primary hover:bg-surface-variant transition-colors cursor-pointer uppercase text-center font-bold"
+                    href="#contact">
+                    Book a Free Assessment
+                </a>
+            </div>
+        </div>
+        <!-- Right Parallax Mosaic (45%) -->
+        <div class="w-full md:w-[45%] h-[600px] relative">
+            <div class="grid grid-cols-2 grid-rows-3 gap-base h-full absolute inset-0">
+                <!-- Top Left (Taller) -->
+                <div class="col-span-1 row-span-2 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="0.05">
+                    <img class="absolute inset-0 w-full h-full object-cover" alt="Oxford Plumbing Company Vehicle"
+                        src="images/company website.webp" loading="eager" fetchpriority="high" width="600" height="800" decoding="async" />
+                </div>
+                <!-- Top Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="-0.03">
+                    <img class="absolute inset-0 w-full h-full object-cover"
+                        alt="Modern commercial plumbing utility room with organized pipe grid"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6h0nfXU3M65Q8E-sJNs39mv6yCs9NnM8hnbAMz-dLQWKvLkS1kVyn5Pju9dK8WhBppJ_fxIiI_aO15TLmZdwqf93fbyCUOEt5P1KOvKtAmnqJzVdL16tKks1aRQ_2LkTMNWm5uYUYMczm6Eu8dZsSXjw0WfOfJVAfMAybcGYkuf8d8aUkX7mL-_zFllXLuFl4sN768NHxhrk8mSrNPJLg6Rc_RNf5Q0uLRPaD4XOOv9ucCDQpmb_"
+                        loading="eager" width="600" height="400" decoding="async" />
+                </div>
+                <!-- Middle Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-secondary/10 parallax-layer"
+                    data-speed="0.08">
+                    <img class="absolute inset-0 w-full h-full object-cover"
+                        alt="Heavy-duty brass commercial water valve close-up"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLb4g-J_UPQgjwFnYSMRnmkIDKzUhOIlX4aEhg6JNDJxFcadYIsE_Y2NNTrKgnot2RQnSV7TCJce0EYRPR_Q2KSmnTK6xSflCpHq5EQrX9FcfUTg0VV6ffso9Q0wsGaEcVIHjS5BUaDcu38kTlMpgmxEHcHZutMB18D0L-s23ZQ3nvqzgiOZR4F_j89ZcjMzJYqtYlUl0Qw3Hvf7x4ONh4B184IziPJ6tn8kTpmogRKIoEJVum5mdk"
+                        loading="lazy" width="600" height="400" decoding="async" />
+                </div>
+                <!-- Bottom Left -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="-0.05">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div
+                            class="font-label-mono text-label-mono border border-outline px-sm py-xs uppercase text-on-surface-variant bg-surface">
+                            Est. 1994</div>
+                    </div>
+                </div>
+                <!-- Bottom Right -->
+                <div class="col-span-1 row-span-1 border border-outline/20 relative overflow-hidden bg-surface-container parallax-layer"
+                    data-speed="0.02">
+                    <img class="absolute inset-0 w-full h-full object-cover"
+                        alt="Geometric grid pattern of intersecting metal plumbing pipes"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBenAAxGIOZREegTt675fSmVOgL4NDsp27VN0Ej4w1hiVhtKXZ1MgJ8B3sC4OS9RS35QH6LNDTebsWsc7GrXwHoroMQjshYiVFQR-s1mrp59dr7ecL1ACsfA-9wWLa15vLzhlbe66oO2HW7QbiSBkQP6MIOcq2cTbfQ1nZEitz8-S2urswPdIZ33gwmaxUfPW4EOA7WX5OeVk_4jQ4HuVHAJV10qs_5y_h9deP3ZBLKords_jAKAkmj"
+                        loading="lazy" width="600" height="400" decoding="async" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SERVICES
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-services">
+<section class="w-full bg-[#333331] text-[#fcf9f2] dark:bg-[#1f1f1e] dark:text-[#e0ddd6] py-lg border-b border-[#504e4b] relative z-20" id="services">
+    <div class="max-w-max_width mx-auto px-md">
+        <div class="mb-lg text-center fade-up-element">
+            <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 uppercase leading-none mb-sm">
+                Expert Plumbing Services in Austin, TX.
+            </h2>
+            <p class="font-body-lg text-body-lg opacity-90 max-w-2xl mx-auto mb-sm">
+                Oxford Plumbing provides reliable, modern plumbing solutions for homes and businesses. Our licensed technicians handle everything from emergency repairs to full system upgrades.
+            </p>
+            <div class="w-24 h-1 bg-secondary mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+            <!-- Service 1 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">water_heater</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Water Heaters</h3>
+                <p class="font-body-md text-body-md opacity-80">Professional repair, replacement, and regular maintenance for both traditional tank and modern tankless water heater models.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.1s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">plumbing</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Drain Cleaning</h3>
+                <p class="font-body-md text-body-md opacity-80">Thorough clog removal and root clearing for sinks, bathtubs, toilets, and main sewer lines to restore proper flow.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.2s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">search</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Leak Detection</h3>
+                <p class="font-body-md text-body-md opacity-80">Advanced slab leak locating and non-invasive acoustic diagnostics to find hidden water leaks without damaging your property.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.3s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">emergency</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">24/7 Emergency</h3>
+                <p class="font-body-md text-body-md opacity-80">Fast-response emergency plumbing repairs for burst pipes, severe sewer backups, and active leaks, available day or night.</p>
+            </div>
+            <!-- Service 5 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.4s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">construction</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Cast Iron Replacement</h3>
+                <p class="font-body-md text-body-md opacity-80">Comprehensive modern PVC piping upgrades for aging, deteriorated cast iron plumbing lines common in older Austin homes.</p>
+            </div>
+            <!-- Service 6 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.5s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">water_drop</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Water Quality</h3>
+                <p class="font-body-md text-body-md opacity-80">Customized whole-home water filtration systems and water softener installations for clean, safe, and great-tasting water.</p>
+            </div>
+            <!-- Service 7 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.6s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">videocam</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Camera Inspections</h3>
+                <p class="font-body-md text-body-md opacity-80">High-definition plumbing video diagnostics to accurately pinpoint pipe damage, root intrusions, or stubborn clogs.</p>
+            </div>
+            <!-- Service 8 -->
+            <div class="flex flex-col items-center justify-start text-center fade-up-element p-sm border border-[#504e4b]/50 hover:border-secondary transition-colors bg-[#262624] dark:bg-[#282826] rounded-sm" style="transition-delay: 0.7s;">
+                <span class="material-symbols-outlined text-[40px] mb-sm text-secondary" style="font-variation-settings: 'FILL' 0;">assignment</span>
+                <h3 class="font-h3 text-[20px] uppercase mb-xs">Free Diagnostics</h3>
+                <p class="font-body-md text-body-md opacity-80">Comprehensive plumbing system overview and upfront pricing with absolutely no dispatch fees for our local customers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             ABOUT
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-about">
+<section class="w-full py-xl bg-surface relative" id="about">
+    <div class="max-w-max_width mx-auto px-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg lg:gap-xl">
+            <!-- Image Side -->
+            <div class="relative h-[500px] border border-outline/20 p-base bg-surface-container fade-up-element mb-xl md:mb-0 overflow-visible">
+                <img class="w-full h-full object-cover" alt="Oxford Plumbing Company Vehicle" src="images/company cehicle.webp" loading="lazy" />
+                <!-- Credentials Badge -->
+                <div class="absolute -bottom-md -right-md border border-secondary bg-surface shadow-lg p-sm min-w-[200px]">
+                    <div class="flex items-center gap-xs mb-sm border-b border-outline/20 pb-xs">
+                        <span class="material-symbols-outlined text-secondary" style="font-size: 20px; font-variation-settings: 'FILL' 1;">verified</span>
+                        <span class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Fully Credentialed</span>
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <div class="flex justify-between items-center gap-md">
+                            <span class="font-label-mono text-[9px] uppercase tracking-widest text-on-surface-variant">Master License</span>
+                            <span class="font-label-mono text-[10px] font-bold text-secondary uppercase">RMP 44459</span>
+                        </div>
+                        <div class="flex justify-between items-center gap-md">
+                            <span class="font-label-mono text-[9px] uppercase tracking-widest text-on-surface-variant">Bonded &amp; Insured</span>
+                            <span class="font-label-mono text-[10px] font-bold text-primary uppercase">Yes</span>
+                        </div>
+                        <div class="flex justify-between items-center gap-md">
+                            <span class="font-label-mono text-[9px] uppercase tracking-widest text-on-surface-variant">Established</span>
+                            <span class="font-label-mono text-[10px] font-bold text-primary uppercase">1994</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Text Side -->
+            <div class="flex flex-col justify-center fade-up-element">
+                <div class="inline-block border border-outline px-xs py-[2px] mb-md w-fit bg-surface-container">
+                    <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Firm Overview</span>
+                </div>
+                <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary uppercase mb-md">
+                    Engineering<br />Longevity.</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-lg max-w-md">
+                    Since 1994, <strong>Oxford Plumbing (Licensed as RMP 44459)</strong> has operated on a singular
+                    principle: honest and efficient plumbing solutions. We provide clear options with no pressure,
+                    serving Downtown Austin, South Austin, East Austin, North Austin, West Austin, and surrounding
+                    Travis County suburbs.
+                </p>
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-md border-t border-outline/20 pt-lg mt-sm">
+                    <div>
+                        <span class="block font-h1 text-h1 text-primary mb-xs">16+</span>
+                        <span
+                            class="font-label-mono text-label-mono text-on-surface-variant uppercase border-l-2 border-secondary pl-xs">Years Active</span>
+                    </div>
+                    <div>
+                        <span class="block font-h1 text-h1 text-primary mb-xs">8k+</span>
+                        <span
+                            class="font-label-mono text-label-mono text-on-surface-variant uppercase border-l-2 border-secondary pl-xs">Systems Installed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             REVIEWS
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-reviews">
+<section class="w-full py-xl bg-surface-container relative" id="reviews">
+    <div class="max-w-max_width mx-auto px-md">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg gap-md fade-up-element">
+            <div>
+                <div class="inline-block border border-outline px-xs py-[2px] mb-md w-fit bg-surface">
+                    <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Reputation</span>
+                </div>
+                <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary uppercase leading-none">
+                    Trusted by<br>Austin.
+                </h2>
+            </div>
+            <div class="text-right">
+                <div class="flex items-center gap-xs justify-end mb-xs">
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-h3 text-h3 text-primary ml-sm">4.9</span>
+                </div>
+                <div class="flex items-center justify-end gap-3 mt-1">
+                    <span class="font-label-mono text-[11px] uppercase text-on-surface-variant tracking-widest font-bold mt-0.5">100+ Verified Reviews</span>
+                    <div class="relative w-14 h-10 ml-2">
+                        <div class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline/20 flex items-center justify-center shadow-lg absolute top-0 left-0 shuffle-1 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline/20 flex items-center justify-center shadow-lg absolute top-0 left-0 shuffle-2 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path fill="#d32323" d="M13.2 11.23l2.8-5.35c.16-.31.02-.68-.29-.82l-2.63-1.1c-.26-.11-.56.03-.66.3l-2.4 6.77c-.12.35.15.71.53.64l2.65-.44zM10.87 12.3l-4.7-4.14c-.26-.23-.65-.17-.85.1l-1.63 2.37c-.18.25-.13.6.11.8l5.88 3.7c.3.19.67-.09.6-.45l-.41-2.38zM9.46 13.91l-6.17.65c-.34.03-.57.34-.51.68l.49 2.82c.06.33.37.55.7.47l5.98-1.5c.34-.09.43-.53.18-.76l-1.67-2.36zM11.64 14.86l-2.2 5.92c-.12.32.06.68.39.78l2.77.8c.32.1.66-.08.76-.4l1.3-6.13c.07-.35-.28-.63-.61-.5l-2.41.53zM13.39 13.97l4.7 4.14c.26.23.65.17.85-.1l1.63-2.37c.18-.25.13-.6-.11-.8l-5.88-3.7c-.3-.19-.67.09-.6.45l.41 2.38z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Slider -->
+        <div id="reviews-slider" class="reviews-slider flex overflow-x-auto snap-x snap-mandatory gap-base pb-sm -mx-md px-md md:mx-0 md:px-0">
+            <!-- Review 1 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.05s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Google Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"Josh and Julian with Oxford Plumbing showed up ASAP and immediately took care of the problem. I can't thank them enough and highly recommend Oxford Plumbing to anyone needing reliable, top-quality service."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Local Austin Homeowner</span>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.1s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Yelp Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#d32323" d="M13.2 11.23l2.8-5.35c.16-.31.02-.68-.29-.82l-2.63-1.1c-.26-.11-.56.03-.66.3l-2.4 6.77c-.12.35.15.71.53.64l2.65-.44zM10.87 12.3l-4.7-4.14c-.26-.23-.65-.17-.85.1l-1.63 2.37c-.18.25-.13.6.11.8l5.88 3.7c.3.19.67-.09.6-.45l-.41-2.38zM9.46 13.91l-6.17.65c-.34.03-.57.34-.51.68l.49 2.82c.06.33.37.55.7.47l5.98-1.5c.34-.09.43-.53.18-.76l-1.67-2.36zM11.64 14.86l-2.2 5.92c-.12.32.06.68.39.78l2.77.8c.32.1.66-.08.76-.4l1.3-6.13c.07-.35-.28-.63-.61-.5l-2.41.53zM13.39 13.97l4.7 4.14c.26.23.65.17.85-.1l1.63-2.37c.18-.25.13-.6-.11-.8l-5.88-3.7c-.3-.19-.67.09-.6.45l.41 2.38z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"I gave Oxford Plumbing a call and they were able to arrive at my home in South Austin without delay. The communication was great, they were upfront with pricing, and completely professional."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Suzanne S.</span>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.15s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Google Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"Oxford Plumbing showed up the same day I had an issue and solved it quickly. They went the extra mile to diagnose the issue and gave clear options without any sales pressure."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Austin Resident</span>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.2s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Yelp Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#d32323" d="M13.2 11.23l2.8-5.35c.16-.31.02-.68-.29-.82l-2.63-1.1c-.26-.11-.56.03-.66.3l-2.4 6.77c-.12.35.15.71.53.64l2.65-.44zM10.87 12.3l-4.7-4.14c-.26-.23-.65-.17-.85.1l-1.63 2.37c-.18.25-.13.6.11.8l5.88 3.7c.3.19.67-.09.6-.45l-.41-2.38zM9.46 13.91l-6.17.65c-.34.03-.57.34-.51.68l.49 2.82c.06.33.37.55.7.47l5.98-1.5c.34-.09.43-.53.18-.76l-1.67-2.36zM11.64 14.86l-2.2 5.92c-.12.32.06.68.39.78l2.77.8c.32.1.66-.08.76-.4l1.3-6.13c.07-.35-.28-.63-.61-.5l-2.41.53zM13.39 13.97l4.7 4.14c.26.23.65.17.85-.1l1.63-2.37c.18-.25.13-.6-.11-.8l-5.88-3.7c-.3-.19-.67.09-.6.45l.41 2.38z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"We had a slab leak that was causing a huge mess. Oxford Plumbing came out fast, isolated the leak perfectly, and had the pipes replaced faster than expected. Total lifesavers!"</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Michael T.</span>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.25s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Google Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"Very professional team. They replaced our old 50-gallon tank heater with a brand new tankless system. The work is incredibly clean and our water pressure is great."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Elena G.</span>
+            </div>
+
+            <!-- Review 6 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.3s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Yelp Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#d32323" d="M13.2 11.23l2.8-5.35c.16-.31.02-.68-.29-.82l-2.63-1.1c-.26-.11-.56.03-.66.3l-2.4 6.77c-.12.35.15.71.53.64l2.65-.44zM10.87 12.3l-4.7-4.14c-.26-.23-.65-.17-.85.1l-1.63 2.37c-.18.25-.13.6.11.8l5.88 3.7c.3.19.67-.09.6-.45l-.41-2.38zM9.46 13.91l-6.17.65c-.34.03-.57.34-.51.68l.49 2.82c.06.33.37.55.7.47l5.98-1.5c.34-.09.43-.53.18-.76l-1.67-2.36zM11.64 14.86l-2.2 5.92c-.12.32.06.68.39.78l2.77.8c.32.1.66-.08.76-.4l1.3-6.13c.07-.35-.28-.63-.61-.5l-2.41.53zM13.39 13.97l4.7 4.14c.26.23.65.17.85-.1l1.63-2.37c.18-.25.13-.6-.11-.8l-5.88-3.7c-.3-.19-.67.09-.6.45l.41 2.38z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"Honest pricing and great work. The technicians were respectful of my property and cleaned up thoroughly when they were finished. Will definitely use them again."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">David M.</span>
+            </div>
+
+            <!-- Review 7 -->
+            <div class="w-full md:w-[calc(33.333%-11px)] shrink-0 snap-center border border-outline/20 p-md bg-surface fade-up-element flex flex-col justify-between" style="transition-delay: 0.35s;">
+                <div>
+                    <div class="flex items-center gap-xs mb-sm">
+                        <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                        <!-- Google Logo -->
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 ml-auto"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">"Best plumbers in Austin! Fixed our clogged main line when another company said it couldn't be done without digging up the whole yard."</p>
+                </div>
+                <span class="font-label-mono text-label-mono text-primary uppercase border-t border-outline/20 pt-sm block">Robert W.</span>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             PROJECTS
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-projects">
+<!-- Projects Section -->
+<section class="w-full py-lg bg-surface border-t border-outline/20" id="projects">
+    <div class="max-w-max_width mx-auto px-md">
+
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg gap-md fade-up-element">
+            <div>
+                <div class="inline-block border border-outline px-xs py-[2px] mb-md w-fit bg-surface-container">
+                    <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Recent Work</span>
+                </div>
+                <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary uppercase leading-none">
+                    Project<br>Archive.
+                </h2>
+            </div>
+            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase max-w-xs">
+                Residential &amp; Light Commercial<br>Greater Austin Area
+            </p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-base">
+
+            <!-- Project 1 -->
+            <div class="group border border-outline/20 bg-surface-container overflow-hidden fade-up-element" style="transition-delay: 0.05s;">
+                <div class="relative h-[320px] overflow-hidden bg-surface-container-high">
+                    <img
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvvgEr94TfO77t1rvzyobEbr5og2yNI_y9MP6asotV_kogTDq1xX5niRdV1DOr_DPZ22gHvk3n8kZGHYCd9IQHTlPEIBxz2jYdBzuIk_ePXZmZBTD9zozjpPrJAr_2Wbf68_jw7j17qiFLv6LnkWmVY1Phk2O9c4PIAUwwlksAAE-z1laazI9D80AqLOoXsJSr7IqNwoqdJyCnSkNPTBh_m_1_GOSUhPY6uFMDPhrdB6MCOP6oPBL0"
+                        alt="Tankless Water Heater Installation" loading="lazy" width="600" height="400" decoding="async" />
+                    <div class="absolute top-sm left-sm">
+                        <span class="font-label-mono text-label-mono bg-surface text-on-surface-variant px-xs py-[2px] border border-outline/30 uppercase">Residential</span>
+                    </div>
+                </div>
+                <div class="p-md border-t border-outline/20">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-h3 text-[22px] text-primary uppercase leading-tight">Tankless Water Heater Conversion</h3>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant">2024</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-sm">Full conversion from an aging 50-gallon tank to a high-efficiency continuous flow tankless unit. Upgraded gas lines and venting.</p>
+                    <div class="flex gap-xs">
+                        <span class="font-label-mono text-label-mono text-secondary border-l-2 border-secondary pl-xs uppercase">Installation</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant ml-sm">Round Rock, TX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="group border border-outline/20 bg-surface-container overflow-hidden fade-up-element" style="transition-delay: 0.1s;">
+                <div class="relative h-[320px] overflow-hidden bg-surface-container-high">
+                    <img
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6h0nfXU3M65Q8E-sJNs39mv6yCs9NnM8hnbAMz-dLQWKvLkS1kVyn5Pju9dK8WhBppJ_fxIiI_aO15TLmZdwqf93fbyCUOEt5P1KOvKtAmnqJzVdL16tKks1aRQ_2LkTMNWm5uYUYMczm6Eu8dZsSXjw0WfOfJVAfMAybcGYkuf8d8aUkX7mL-_zFllXLuFl4sN768NHxhrk8mSrNPJLg6Rc_RNf5Q0uLRPaD4XOOv9ucCDQpmb_"
+                        alt="Main Line Sewer Restoration" loading="lazy" width="600" height="400" decoding="async" />
+                    <div class="absolute top-sm left-sm">
+                        <span class="font-label-mono text-label-mono bg-surface text-on-surface-variant px-xs py-[2px] border border-outline/30 uppercase">Infrastructure</span>
+                    </div>
+                </div>
+                <div class="p-md border-t border-outline/20">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-h3 text-[22px] text-primary uppercase leading-tight">Main Line Sewer Restoration</h3>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant">2023</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-sm">Comprehensive sewer camera diagnostics followed by targeted hydro-jetting and cast iron pipe remediation.</p>
+                    <div class="flex gap-xs">
+                        <span class="font-label-mono text-label-mono text-secondary border-l-2 border-secondary pl-xs uppercase">Repair</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant ml-sm">Pflugerville, TX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="group border border-outline/20 bg-surface-container overflow-hidden fade-up-element" style="transition-delay: 0.15s;">
+                <div class="relative h-[320px] overflow-hidden bg-surface-container-high">
+                    <img
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLb4g-J_UPQgjwFnYSMRnmkIDKzUhOIlX4aEhg6JNDJxFcadYIsE_Y2NNTrKgnot2RQnSV7TCJce0EYRPR_Q2KSmnTK6xSflCpHq5EQrX9FcfUTg0VV6ffso9Q0wsGaEcVIHjS5BUaDcu38kTlMpgmxEHcHZutMB18D0L-s23ZQ3nvqzgiOZR4F_j89ZcjMzJYqtYlUl0Qw3Hvf7x4ONh4B184IziPJ6tn8kTpmogRKIoEJVum5mdk"
+                        alt="Whole-Home Repipe" loading="lazy" width="600" height="400" decoding="async" />
+                    <div class="absolute top-sm left-sm">
+                        <span class="font-label-mono text-label-mono bg-surface text-on-surface-variant px-xs py-[2px] border border-outline/30 uppercase">Residential</span>
+                    </div>
+                </div>
+                <div class="p-md border-t border-outline/20">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-h3 text-[22px] text-primary uppercase leading-tight">Whole-Home PEX Repipe</h3>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant">2023</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-sm">Complete removal of degraded galvanized piping replaced with modern PEX. Included integration of a whole-home water filtration system.</p>
+                    <div class="flex gap-xs">
+                        <span class="font-label-mono text-label-mono text-secondary border-l-2 border-secondary pl-xs uppercase">Retrofit</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant ml-sm">Austin, TX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="group border border-outline/20 bg-surface-container overflow-hidden fade-up-element" style="transition-delay: 0.2s;">
+                <div class="relative h-[320px] overflow-hidden bg-surface-container-high">
+                    <img
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBenAAxGIOZREegTt675fSmVOgL4NDsp27VN0Ej4w1hiVhtKXZ1MgJ8B3sC4OS9RS35QH6LNDTebsWsc7GrXwHoroMQjshYiVFQR-s1mrp59dr7ecL1ACsfA-9wWLa15vLzhlbe66oO2HW7QbiSBkQP6MIOcq2cTbfQ1nZEitz8-S2urswPdIZ33gwmaxUfPW4EOA7WX5OeVk_4jQ4HuVHAJV10qs_5y_h9deP3ZBLKords_jAKAkmj"
+                        alt="Slab Leak Diagnostics &amp; Repair" loading="lazy" width="600" height="400" decoding="async" />
+                    <div class="absolute top-sm left-sm">
+                        <span class="font-label-mono text-label-mono bg-surface text-on-surface-variant px-xs py-[2px] border border-outline/30 uppercase">Diagnostics</span>
+                    </div>
+                </div>
+                <div class="p-md border-t border-outline/20">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-h3 text-[22px] text-primary uppercase leading-tight">Slab Leak Isolation</h3>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant">2022</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-sm">Utilized non-invasive acoustic diagnostics to pinpoint an active slab leak, executing a precise repair with minimal property disruption.</p>
+                    <div class="flex gap-xs">
+                        <span class="font-label-mono text-label-mono text-secondary border-l-2 border-secondary pl-xs uppercase">Emergency</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant ml-sm">Georgetown, TX</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             CONTACT
+        ═══════════════════════════════════════════════════════════ -->
+        <div id="section-contact">
+<!-- Contact Section -->
+<section class="w-full py-lg bg-surface-container border-t border-outline/20" id="contact">
+    <div class="max-w-max_width mx-auto px-md">
+
+        <!-- Section Header -->
+        <div class="mb-lg fade-up-element">
+            <div class="inline-block border border-outline px-xs py-[2px] mb-md w-fit bg-surface">
+                <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Get In Touch</span>
+            </div>
+            <h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary uppercase leading-none">
+                Start A<br>Project.
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+
+            <!-- Form (8 cols) -->
+            <div class="lg:col-span-8 fade-up-element" style="transition-delay: 0.05s;">
+                <form class="space-y-sm" id="plumbing-contact-form">
+
+                    <!-- Name + Phone -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-name">Name</label>
+                            <input
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                                id="pl-name" type="text" placeholder="Full name" />
+                        </div>
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-phone">Phone</label>
+                            <input
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                                id="pl-phone" type="tel" placeholder="(512) 542-4056" />
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-email">Email</label>
+                        <input
+                            class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors"
+                            id="pl-email" type="email" placeholder="your@email.com" />
+                    </div>
+
+                    <!-- Project Type + Budget -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-type">Project Type</label>
+                            <select
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none transition-colors"
+                                id="pl-type">
+                                <option value="">Select type...</option>
+                                <option>Commercial New Build</option>
+                                <option>Residential New Build</option>
+                                <option>Commercial Retrofit / Repair</option>
+                                <option>High-End Residential</option>
+                                <option>Industrial Infrastructure</option>
+                                <option>Emergency Service</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-budget">Estimated Budget</label>
+                            <select
+                                class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none transition-colors"
+                                id="pl-budget">
+                                <option value="">Select range...</option>
+                                <option>Under $25,000</option>
+                                <option>$25,000 – $75,000</option>
+                                <option>$75,000 – $250,000</option>
+                                <option>$250,000+</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-2" for="pl-message">Project Details</label>
+                        <textarea
+                            class="w-full bg-surface text-on-surface font-body-md text-body-md px-sm py-sm border border-outline/30 focus:border-secondary focus:outline-none placeholder:text-outline/60 transition-colors resize-none"
+                            id="pl-message" rows="5" placeholder="Describe the project scope, location, timeline, and any special requirements..."></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button
+                        class="inline-flex items-center justify-center px-lg py-sm bg-secondary text-on-secondary font-label-mono text-label-mono border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors uppercase mt-2"
+                        id="plumbing-submit-btn"
+                        type="submit">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Info Panel (4 cols) -->
+            <div class="lg:col-span-4 flex flex-col gap-md fade-up-element" style="transition-delay: 0.1s;">
+
+                <!-- Response time -->
+                <div class="border border-outline/20 p-md bg-surface">
+                    <div class="flex items-center gap-sm mb-sm">
+                        <div class="w-2 h-2 bg-secondary" style="animation: pl-pulse 2s infinite;"></div>
+                        <span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">Response within 24hrs</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Detailed proposals with material specs, labor breakdowns, and project timelines.
+                    </p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="border border-outline/20 p-md bg-surface space-y-md">
+                    <div class="border-b border-outline/20 pb-sm">
+                        <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Contact Info</span>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">call</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Direct Line</p>
+                            <p class="font-h3 text-h3 text-primary">+1 512-542-4056</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">mail</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Email</p>
+                            <p class="font-body-md text-body-md text-on-surface">info@oxfordplumbing.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                        <div>
+                            <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-1">Service Area</p>
+                            <p class="font-body-md text-body-md text-on-surface">Austin, Texas (Serving Downtown Austin, South Austin, East Austin, North Austin, West Austin, and surrounding Travis County suburbs)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-outline/20 p-md bg-surface">
+                    <div class="mb-sm">
+                        <iframe
+                          title="Oxford Plumbing Service Area Map"
+                          src="https://google.com"
+                          width="100%"
+                          height="200"
+                          style="border:0; display:block;"
+                          allowfullscreen=""
+                          loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="flex items-center gap-sm mb-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 0;">verified</span>
+                        <span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Fully Credentialed</span>
+                    </div>
+                    <div class="space-y-1 font-label-mono text-label-mono text-on-surface-variant">
+                        <div class="flex justify-between">
+                            <span>MASTER LICENSE</span><span class="text-secondary">RMP 44459</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>BONDED &amp; INSURED</span><span class="text-secondary">YES</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>ESTABLISHED</span><span class="text-secondary">1994</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
     </main>
-    <div id="section-footer"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════════ -->
+    <div id="section-footer">
+<footer class="w-full bg-on-surface text-surface border-t border-on-surface-variant/30">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-max_width mx-auto px-md py-lg gap-sm">
+        <div class="font-h3 text-h3 text-surface uppercase">OXFORD PLUMBING</div>
+        <div class="flex flex-wrap justify-center gap-md font-label-mono text-label-mono uppercase">
+            <a class="text-surface/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+            <a class="text-surface/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+            <span class="text-surface/80 border border-outline/30 px-xs py-[2px]">Austin, TX</span>
+        </div>
+        <div class="font-label-mono text-label-mono uppercase text-surface/80 mt-sm md:mt-0">
+            © <span id="current-year"></span> OXFORD PLUMBING CO. EST. 1994
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+        </div>
+    </div>
+</footer>
+    </div>
+
     <!-- Floating Action Button -->
     <a href="tel:+15125424056"
         class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center justify-center w-14 h-14 rounded-[50%] bg-secondary text-on-secondary border border-secondary hover:bg-on-surface hover:border-on-surface transition-colors shadow-lg group fab-pulse-anim"

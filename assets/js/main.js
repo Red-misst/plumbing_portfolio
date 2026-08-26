@@ -1,3 +1,4 @@
+// ─── Section definitions (used for local dev dynamic loading only) ───────────
 const SECTIONS = [
   { id: 'section-nav',      file: 'sections/nav.html'      },
   { id: 'section-hero',     file: 'sections/hero.html'     },
@@ -9,21 +10,27 @@ const SECTIONS = [
   { id: 'section-footer',   file: 'sections/footer.html'   },
 ];
 
+// Sections are inlined in index.html for production (Netlify).
+// This fetch fallback only runs locally when the page is served via a
+// dev server and sections are NOT already present in the DOM.
 async function loadSections() {
-  // Load sections sequentially (top-to-bottom) to eliminate Cumulative Layout Shift.
-  // Parallel loading causes out-of-order injections that reposition content.
-  for (const { id, file } of SECTIONS) {
+  const results = await Promise.all(
+    SECTIONS.map(async ({ id, file }) => {
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+        const html = await res.text();
+        return { id, html };
+      } catch (err) {
+        console.error(`[Plumbing] Section load error: ${err.message}`);
+        return { id, html: '' };
+      }
+    })
+  );
+  // Inject in document order to preserve layout stability
+  for (const { id, html } of results) {
     const container = document.getElementById(id);
-    if (!container) continue;
-
-    try {
-      const res  = await fetch(file);
-      if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
-      const html = await res.text();
-      container.innerHTML = html;
-    } catch (err) {
-      console.error(`[Plumbing] Section load error: ${err.message}`);
-    }
+    if (container && html) container.innerHTML = html;
   }
 }
 
@@ -243,12 +250,21 @@ function initReviewsSlider() {
 }
 
 async function init() {
-    // Apply saved theme before sections load to avoid flash
+    // Apply saved theme immediately to avoid flash of unstyled content
     const html = document.getElementById('html-root');
     const saved = localStorage.getItem('theme-plumbing');
     if (saved === 'dark') html.classList.add('dark');
 
-    await loadSections();
+    // Sections are inlined into index.html on production (Netlify).
+    // When running locally via a dev server the section containers will be
+    // empty divs, so we detect that and fall back to fetching them.
+    const heroContainer = document.getElementById('section-hero');
+    const sectionsAreInlined = heroContainer && heroContainer.children.length > 0;
+
+    if (!sectionsAreInlined) {
+        await loadSections();
+    }
+
     initTheme();
     initNav();
     initAnimations();
